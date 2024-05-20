@@ -6,15 +6,28 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+const user = "root" || process.env.BLOOSER;
+const host = "localhost" || process.env.KV_REST_API_URL;
+const password = "root" || process.env.KV_REST_API_TOKEN;
+
+
 const db = mysql.createConnection({//pool?
-  user: "root",
-  host: "localhost",
-  password: "root",
+  user: user,
+  host: host,
+  password: password,
   database: "testcrud",
 });
 
 app.get("/", (req,res) => {
  res.send("your momma");
+
+  db.query("SELECT * FROM employees", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+    }
+  });
 });
 
 
