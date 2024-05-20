@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 const user = "root" || process.env.BLOOSER;
-const host = "localhost" || process.env.KV_REST_API_URL;
+const host = "localhost" || process.env.KV_URL;
 const password = "root" || process.env.KV_REST_API_TOKEN;
 
 
